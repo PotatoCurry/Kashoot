@@ -57,8 +57,6 @@ class Quiz internal constructor(quizID: String) {
     val created = jsonQuiz.created
 
     val modified = jsonQuiz.modified
-
-
 }
 
 class Question internal constructor(jsonQuestion: JsonQuestion) {
@@ -73,6 +71,8 @@ class Question internal constructor(jsonQuestion: JsonQuestion) {
     val answerCount = jsonQuestion.numberOfAnswers
 
     val choices = jsonQuestion.choices.map(::Choice)
+
+    val correctAnswer = choices.single{ it.correct }.answer
 }
 
 class Choice internal constructor(jsonChoice: JsonChoice) {
