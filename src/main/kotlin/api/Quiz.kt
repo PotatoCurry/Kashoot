@@ -72,7 +72,7 @@ class Question internal constructor(jsonQuestion: JsonQuestion) {
 
     val choices = jsonQuestion.choices.map(::Choice)
 
-    val correctAnswer = choices.single{ it.correct }.answer
+    val correctAnswers = choices.filter{ it.correct }.map{ it.answer }
 }
 
 class Choice internal constructor(jsonChoice: JsonChoice) {

@@ -16,7 +16,7 @@ internal data class JSONQuiz (
     val creatorPrimaryUsage: String,
 
     @Json(name = "folderId")
-    val folderID: String,
+    val folderID: String? = null,
 
     val visibility: Int,
     val audience: String,
@@ -27,7 +27,7 @@ internal data class JSONQuiz (
     val coverMetadata: JsonMetadata,
     val questions: List<JsonQuestion>,
     val metadata: JsonMetadataClass,
-    val resources: String,
+    val resources: String? = null,
     val slug: String,
     val type: String,
     val created: Long,
@@ -43,11 +43,11 @@ internal data class JsonMetadata (
 )
 
 internal data class JsonMetadataClass (
-    val resolution: String,
-    val moderation: JsonModeration,
-    val sponsored: Boolean,
-    val duplicationProtection: Boolean,
-    val lastEdit: JsonLastEdit
+    val resolution: String? = null,
+    val moderation: JsonModeration? = null,
+    val sponsored: Boolean? = null,
+    val duplicationProtection: Boolean? = null,
+    val lastEdit: JsonLastEdit? = null
 )
 
 internal data class JsonLastEdit (
@@ -72,9 +72,9 @@ internal data class JsonQuestion (
     val points: Boolean,
     val numberOfAnswers: Int,
     val choices: List<JsonChoice>,
-    val image: String,
-    val imageMetadata: JsonMetadata,
-    val resources: String
+    val image: String? = null,
+    val imageMetadata: JsonMetadata? = null,
+    val resources: String? = null
 //    val video: JsonVideo
 )
 
@@ -83,13 +83,10 @@ internal data class JsonChoice (
     val correct: Boolean
 )
 
-// Causes errors, probably because some parameters are empty
 //internal data class JsonVideo (
-//    val id: String = "",
+//    val id: String? = null,
 //    val startTime: Long,
 //    val endTime: Long,
 //    val service: String,
-//
-//    @Json(name = "fullUrl")
-//    val fullURL: String = ""
+//    val fullURL: String? = null
 //)
