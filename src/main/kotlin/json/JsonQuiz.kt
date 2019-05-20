@@ -61,7 +61,7 @@ internal data class JsonLastEdit (
 internal data class JsonModeration (
     val flaggedTimestamp: Long,
     val timestampResolution: Long,
-    val resolution: String
+    val resolution: String? = null
 )
 
 internal data class JsonQuestion (
