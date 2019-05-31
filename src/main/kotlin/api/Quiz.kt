@@ -59,7 +59,7 @@ class Quiz internal constructor(quizID: String) {
     val modified = jsonQuiz.modified
 }
 
-class Question internal constructor(jsonQuestion: JsonQuestion) {
+data class Question internal constructor(private val jsonQuestion: JsonQuestion) {
     val question = jsonQuestion.question
 
     val format = jsonQuestion.questionFormat
@@ -72,10 +72,10 @@ class Question internal constructor(jsonQuestion: JsonQuestion) {
 
     val choices = jsonQuestion.choices.map(::Choice)
 
-    val correctAnswers = choices.filter{ it.correct }.map{ it.answer }
+    val correctAnswers = choices.filter(Choice::correct).map(Choice::answer)
 }
 
-class Choice internal constructor(jsonChoice: JsonChoice) {
+data class Choice internal constructor(private val jsonChoice: JsonChoice) {
     val answer = jsonChoice.answer
 
     val correct = jsonChoice.correct
